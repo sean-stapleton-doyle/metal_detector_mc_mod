@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "S  ",
+    " SR",
+    " RC"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "metal_detector:osc_crystal"
+    }
+  },
+  "result": {
+    "id": "metal_detector:metal_detector"
+  }
+}
