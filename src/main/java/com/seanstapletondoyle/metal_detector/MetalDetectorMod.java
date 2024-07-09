@@ -1,5 +1,6 @@
 package com.seanstapletondoyle.metal_detector;
 
+import com.seanstapletondoyle.metal_detector.block.ModBlocks;
 import com.seanstapletondoyle.metal_detector.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -24,10 +25,20 @@ public class MetalDetectorMod
 
     public MetalDetectorMod()
     {
+        // Get mod event bus
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        // Register Mod's Items
         ModItems.register(modEventBus);
-        modEventBus.addListener(this::commonSetup);
+
+        // Register Mod's Blocks
+        ModBlocks.register(modEventBus);
+
+        // Register event bus after registering mod entities
         MinecraftForge.EVENT_BUS.register(this);
+
+        // Custom event handlers
+        modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreative);
     }
 
@@ -37,11 +48,12 @@ public class MetalDetectorMod
         LOGGER.info("Setting up " + MODID);
     }
 
-    // Add the example block item to the building blocks tab
+    // Add custom items and blocks to creative mode tabs
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.accept(ModItems.OSC_CRYSTAL);
             event.accept(ModItems.METAL_DETECTOR);
+            event.accept(ModBlocks.CRYSTAL_ORE_BLOCK);
         }
     }
 
