@@ -14,7 +14,7 @@ public class ModItems {
     );
     public static final RegistryObject<Item> METAL_DETECTOR = ITEMS.register("metal_detector",
             () -> new MetalDetectorItem(new Item.Properties()));
-    public static void register(IEventBus eventBus) {
+    public static void registerModItems(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
 }

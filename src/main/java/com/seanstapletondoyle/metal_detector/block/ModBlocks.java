@@ -33,7 +33,7 @@ public class ModBlocks {
         registerBlockItem(name, blockRegistryObject);
         return blockRegistryObject;
     }
-    public static void register(IEventBus eventBus) {
+    public static void registerModBlocks(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }
 }

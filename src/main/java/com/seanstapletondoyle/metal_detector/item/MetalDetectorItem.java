@@ -1,7 +1,8 @@
 package com.seanstapletondoyle.metal_detector.item;
 
+import com.mojang.logging.LogUtils;
+import com.seanstapletondoyle.metal_detector.ModUtils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -17,11 +18,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
 
 public class MetalDetectorItem extends Item {
     private static final int DETECTION_DISTANCE = 12;
     private static final TagKey<Block> METAL_BLOCKS_TAG = BlockTags.create(new ResourceLocation("metal_detector", "metal_blocks"));
-
+    private static final Logger logger = LogUtils.getLogger();
     public MetalDetectorItem(Properties props) {
         super(props);
     }
@@ -42,18 +44,16 @@ public class MetalDetectorItem extends Item {
 
         for (int i = 1; i <= DETECTION_DISTANCE; i++) {
             Vec3 checkVector = playerPosition.add(playerLookVector.scale(i));
-
             for (int xOffset = -1; xOffset <= 2; xOffset++) {
                 for (int yOffset = -1; yOffset <= 2; yOffset++) {
                     BlockPos positionToCheck = new BlockPos(
-                            (int) checkVector.x + xOffset,
-                            (int) checkVector.y + yOffset,
+                            (int) checkVector.x() + xOffset,
+                            (int) checkVector.y() + yOffset,
                             (int) checkVector.z);
 
                     if (blockHasMetal(level, positionToCheck)) {
                         makeSound(level, positionToCheck);
-                        player.sendSystemMessage(Component.literal("Metal detected at " +
-                                "(" + positionToCheck.getX() + ", " + positionToCheck.getY() + ", " + positionToCheck.getZ() + ")"));
+                        logger.debug("Metal detected at " + ModUtils.vectorLikeToString(positionToCheck));
                         return;
                     }
                 }

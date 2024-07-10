@@ -5,7 +5,6 @@ import com.seanstapletondoyle.metal_detector.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -30,10 +29,10 @@ public class MetalDetectorMod
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register Mod's Items
-        ModItems.register(modEventBus);
+        ModItems.registerModItems(modEventBus);
 
         // Register Mod's Blocks
-        ModBlocks.register(modEventBus);
+        ModBlocks.registerModBlocks(modEventBus);
 
         // Register event bus after registering mod entities
         MinecraftForge.EVENT_BUS.register(this);
