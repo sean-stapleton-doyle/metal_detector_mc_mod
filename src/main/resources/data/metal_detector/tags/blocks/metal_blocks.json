@@ -18,7 +18,7 @@
     "minecraft:iron_bars",
     "minecraft:iron_door",
     "minecraft:iron_trapdoor",
-    "minecraft:iron_pressure_plate",
+    "minecraft:light_weighted_pressure_plate",
     "minecraft:heavy_weighted_pressure_plate",
     "minecraft:chain",
     "minecraft:lantern",

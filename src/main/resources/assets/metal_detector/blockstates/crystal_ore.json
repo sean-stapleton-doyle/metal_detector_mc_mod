@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "metal_detector:block/crystal_ore"
+    }
+  }
+}

@@ -20,7 +20,7 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, MetalDetectorMod.MODID);
 
     public static final RegistryObject<Block> CRYSTAL_ORE_BLOCK = registerBlock("crystal_ore",
-            () -> new CrystalBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK))
+            () -> new CrystalBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE))
     );
     public static <B extends Block> void registerBlockItem(String name, RegistryObject<B> blockRegistryObject) {
         ModItems.ITEMS.register(name,
